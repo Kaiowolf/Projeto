@@ -14,14 +14,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "git+https://github.com/Kaiowolf/Projeto.git"
   },
   "author": "Kaio Cesar Ribeiro de Oliveira",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/Kaiowolf/Projeto/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/Kaiowolf/Projeto#readme",
   "devDependencies": {
     "nodemon": "^1.19.3"
   },
