@@ -3,14 +3,18 @@ import React from 'react'
 export default class Lista extends React.Component {
 
     exibirLinhas = () => {
-        //retorna a lista de props se existir
         const cursos = this.props.batatas || [];
-        return cursos.map(curso => {
-            return <tr key={curso._id}>
+        return cursos.map(curso => (
+            <tr key={curso._id}>
                 <td>{curso.codigo}</td>
                 <td>{curso.descricao}</td>
+                <td><button className="btn btn-danger"
+                    onClick={() => this.props.removerCurso(curso)}>
+                    <i className="fa fa-trash-o"></i>
+                </button>
+                </td>
             </tr>
-        });
+        ));
     }
 
     render() {
@@ -23,6 +27,7 @@ export default class Lista extends React.Component {
                         <tr>
                             <th>Código</th>
                             <th>Descrição</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
