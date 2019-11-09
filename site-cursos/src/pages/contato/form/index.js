@@ -14,18 +14,14 @@ class FormContato extends Component {
     adicionar = function (e) {
         e.preventDefault();
 
-        const { adicionaContato, data, nome, email, assunto} = this.props
-        
-        adicionaContato(
-            data,
-            nome,
-            email,
-            assunto)
+        const { adicionaContato, data, nome, email, assunto } = this.props
+
+        adicionaContato(data, nome, email, assunto)
         alert('Contato enviado com sucesso')
     }
     render() {
 
-        const { data, assunto, email, nome, alteraData, alteraAssunto, alteraEmail, alteraNome} = this.props
+        const { data, assunto, email, nome, alteraData, alteraAssunto, alteraEmail, alteraNome } = this.props
 
         return (
             <div>

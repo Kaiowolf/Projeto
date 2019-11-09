@@ -1,8 +1,31 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { alteraCodigo,
+    alteraDescricao,
+    alteraCargaHoraria,
+    alteraPreco,
+    alteraCategoria } from '../../../actions/curso-actions'
 
-export default class Formulario extends React.Component {
+const mapStateToProps = state => ({
+    codigo: state.curso.codigo,
+    descricao: state.curso.descricao,
+    cargaHoraria: state.curso.cargaHoraria,
+    preco: state.curso.preco,
+    categoria: state.curso.categoria,
+    textoBotao: state.curso.textoBotao
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators ({
+    alteraCodigo, alteraDescricao, alteraCargaHoraria, alteraPreco, alteraCategoria
+}, dispatch)
+
+class Formulario extends React.Component {
 
     render() {
+
+        const { codigo, descricao, cargaHoraria, preco, categoria, textoBotao,
+        alteraCodigo, alteraDescricao, alteraCargaHoraria, alteraPreco, alteraCategoria } = this.props
         return (
             <div className="border-right pl-3 pr-3">
                 <h3 className="border-bottom">Formulário</h3>
@@ -14,8 +37,8 @@ export default class Formulario extends React.Component {
                         </label>
                         <div className="col-sm-9">
                             <input type="number"
-                                className="form-control" id="codigo" value={this.props.codigo}
-                                onChange={(e) => { this.props.alteraCampos(e.target) }} />
+                                className="form-control" id="codigo" value={codigo}
+                                onChange={alteraCodigo} />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -25,8 +48,8 @@ export default class Formulario extends React.Component {
                         </label>
                         <div className="col-sm-9">
                             <input type="text"
-                                className="form-control" id="descricao" value={this.props.descricao}
-                                onChange={(e) => { this.props.alteraCampos(e.target) }} />
+                                className="form-control" id="descricao" value={descricao}
+                                onChange={alteraDescricao} />
                         </div>
                     </div>
 
@@ -36,8 +59,8 @@ export default class Formulario extends React.Component {
                             Carga Horária:</label>
                         <div className="col-sm-9">
                             <input type="number"
-                                className="form-control" id="cargaHoraria" value={this.props.cargaHoraria}
-                                onChange={(e) => { this.props.alteraCampos(e.target) }} />
+                                className="form-control" id="cargaHoraria" value={cargaHoraria}
+                                onChange={alteraCargaHoraria} />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -46,16 +69,16 @@ export default class Formulario extends React.Component {
                             Preço:</label>
                         <div className="col-sm-9">
                             <input type="number"
-                                className="form-control" id="preco" value={this.props.preco}
-                                onChange={(e) => { this.props.alteraCampos(e.target) }} />
+                                className="form-control" id="preco" value={preco}
+                                onChange={alteraPreco} />
                         </div>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="categoria"
                             className="col-sm-3 col-form-label">Categoria:</label>
                         <div className="col-sm-9">
-                            <select className="form-control" id="categoria" value={this.props.categoria}
-                                onChange={(e) => { this.props.alteraCampos(e.target) }}>
+                            <select className="form-control" id="categoria" value={categoria}
+                                onChange={alteraCategoria}>
                                 <option>INFORMATICA</option>
                                 <option>ENGENHARIA</option>
                                 <option>ADMINISTRACAO</option>
@@ -66,7 +89,7 @@ export default class Formulario extends React.Component {
                     <div className="form-group row">
                         <button onClick={this.props.adicionarCurso}
                             className="btn btn-primary ml-3 mb-3 mr-3">
-                            {this.props.textoBotao}
+                            {textoBotao}
                         </button>
 
                         <button className="btn btn-primary ml-3 mb-3"
@@ -78,3 +101,5 @@ export default class Formulario extends React.Component {
         )
     }
 }
+
+export default connect (mapStateToProps, mapDispatchToProps)(Formulario)
